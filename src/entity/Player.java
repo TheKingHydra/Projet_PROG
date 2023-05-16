@@ -148,7 +148,7 @@ public class Player extends Entity{
 				return true;
 			}
 			int val = tileManager.getTuile(tilex-1,tiley);
-			autorise = (val == 1 || val == 3 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16);
 			if (autorise){ //Liste des cases autorisées.
 				return false;
 			}
@@ -162,7 +162,7 @@ public class Player extends Entity{
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley-1);
-			autorise = (val == 1 || val == 3 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16);
 			if (autorise){
 				return false;
 			}
@@ -176,7 +176,7 @@ public class Player extends Entity{
 				return true;
 			}
 			int val = tileManager.getTuile(tilex+1,tiley);
-			autorise = (val == 1 || val == 3 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16);
 			if (autorise){
 				return false;
 			}
@@ -190,7 +190,7 @@ public class Player extends Entity{
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley+1);
-			autorise = (val == 1 || val == 3 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16);
 			if (autorise){
 				return false;
 			}
