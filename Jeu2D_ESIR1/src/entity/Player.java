@@ -46,7 +46,7 @@ public class Player extends Entity{
 	public void getPlayerImage() {
 		//gestion des expections 
 		try {
-			m_idleImage = ImageIO.read(getClass().getResource("Jeu2D_ESIR1/res/player/superhero.png"));
+			m_idleImage = ImageIO.read(getClass().getResource("player/superhero.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
