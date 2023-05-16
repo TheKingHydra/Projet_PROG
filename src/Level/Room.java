@@ -20,12 +20,21 @@ public class Room {
 		this.porteDroite = porteDroite;
 	}
 	
-	public Room(int idRoom) {
+	public Room(int idRoom, Player player, TileManager tileManager) {
 		this.idRoom = idRoom;
 		this.porteHaut = null;
 		this.porteBas = null;
 		this.porteGauche = null;
 		this.porteDroite = null;
+        this.tileManager = tileManager;
+        this.player = player;
 	}
 
+    public Player getPlayer(){
+        return this.player;
+    }
+
+    public TileManager getTileManager(){
+        return this.tileManager;
+    }
 }

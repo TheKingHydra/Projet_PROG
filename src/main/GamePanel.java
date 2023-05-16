@@ -32,8 +32,7 @@ public class GamePanel extends JPanel implements Runnable{
 	// Cr�ation des diff�rentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler m_keyH;
 	Thread m_gameThread;
-	Player m_player;
-	TileManager m_tileM;
+	Player player;
 		
 	Room m_room;
 	
@@ -43,10 +42,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public GamePanel() {
 		m_FPS = 60;				
 		m_keyH = new KeyHandler();
-		m_player = new Player(this, m_keyH);
-		m_tileM = new TileManager(this);
-		m_room = new Room(1);
-
+		m_room = new Room(1, new Player(this, m_keyH), new TileManager(this));
+		this.player = m_room.getPlayer();
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
@@ -99,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable{
 	 * Mise � jour des donn�es des entit�s
 	 */
 	public void update() {
-		m_player.update();
+		player.update();
 	}
 	
 	/**
@@ -108,8 +105,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		m_tileM.draw(g2);
-		m_player.draw(g2);
+		m_room.getTileManager().draw(g2);
+		player.draw(g2);
 		g2.dispose();
 	}
 	
