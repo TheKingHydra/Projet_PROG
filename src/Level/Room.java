@@ -81,23 +81,22 @@ public class Room {
     }
 
     public Room changerRoom(){
-        if (tileManager.getShouldChange()){
-            Room r = this;
-            if(player.m_x == 0) {
-                r = porteGauche.getOtherRoom(this.idRoom);
-            }
-            if(player.m_x == 720) {
-                r = porteDroite.getOtherRoom(this.idRoom);
-            }
-            if(player.m_y == 0) {
-                r = porteHaut.getOtherRoom(this.idRoom);
-            }
-            if(player.m_y == 576) {
-                r = porteBas.getOtherRoom(this.idRoom);
-            }
-            return r;
-        } else {
-            return null;
+        Room r = this;
+        int tilex = (player.m_x/player.getStep());
+		int tiley = (player.m_y/player.getStep());
+        if(tilex == 0) {
+            r = porteGauche.getOtherRoom(this.idRoom);
         }
+        if(tilex == 15) {
+            r = porteDroite.getOtherRoom(this.idRoom);
+        }
+        if(tiley == 0) {
+            r = porteHaut.getOtherRoom(this.idRoom);
+        }
+        if(tiley == 11) {
+            r = porteBas.getOtherRoom(this.idRoom);
+        }
+        return r;
     }
 }
+

@@ -9,8 +9,15 @@ public class Porte {
 	public Porte(int idPorte) {
 		this.idPorte = idPorte;
 		estOuverte = false; //par defaut, la porte est fermée
-		
 	}
+
+	public Porte(int idPorte, Room room1, Room room2){
+		this.idPorte = idPorte;
+		estOuverte = false; //par defaut, la porte est fermée
+		this.room1 = room1;
+		this.room2 = room2;
+	}
+
 	public boolean estOuverte() {
 		return estOuverte;
 	}
