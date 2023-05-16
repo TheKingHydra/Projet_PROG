@@ -3,11 +3,16 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import entity.Player;
+import tile.TileManager;
+
 /**
- * Gestionnaire d'évènements (touche clavier)
+ * Gestionnaire d'ï¿½vï¿½nements (touche clavier)
  *
  */
 public class KeyHandler implements KeyListener{
+
+	private Player player;	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -16,14 +21,19 @@ public class KeyHandler implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// récupère le code du boutton appuyé
+		// rï¿½cupï¿½re le code du boutton appuyï¿½
 		int code = e.getKeyCode();
-		System.out.println(code);
+		//System.out.println(code);
+		player.deplacement(code);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
+	}
+
+	public void setPlayer(Player player){
+		this.player = player;
 	}
 
 }

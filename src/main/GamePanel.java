@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import Level.Porte;
+import Level.Room;
 import entity.Player;
 import tile.TileManager;
 
@@ -16,33 +18,48 @@ import java.awt.Graphics2D;
  */
 public class GamePanel extends JPanel implements Runnable{
 	
-	//Paramètres de l'écran
+	//Paramï¿½tres de l'ï¿½cran
 	final int ORIGINAL_TILE_SIZE = 16; 							// une tuile de taille 16x16
-	final int SCALE = 3; 										// échelle utilisée pour agrandir l'affichage
+	final int SCALE = 3; 										// ï¿½chelle utilisï¿½e pour agrandir l'affichage
 	public final int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE; 	// 48x48
 	public final int MAX_SCREEN_COL = 16;
-	public final int MAX_SCREE_ROW = 12; 					 	// ces valeurs donnent une résolution 4:3
+	public final int MAX_SCREE_ROW = 12; 					 	// ces valeurs donnent une rï¿½solution 4:3
 	public final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // 768 pixels
 	public final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREE_ROW;	// 576 pixels
 
 	// FPS : taux de rafraichissement
 	int m_FPS;
 	
-	// Création des différentes instances (Player, KeyHandler, TileManager, GameThread ...)
+	// Crï¿½ation des diffï¿½rentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler m_keyH;
 	Thread m_gameThread;
-	Player m_player;
-	TileManager m_tileM;
+	Player player;
 		
+	private Room m_room;
+	
 	/**
 	 * Constructeur
 	 */
 	public GamePanel() {
 		m_FPS = 60;				
-		m_keyH = new KeyHandler();
-		m_player = new Player(this, m_keyH);
-		m_tileM = new TileManager(this);
 		
+
+		//Changements
+		m_keyH = new KeyHandler();
+		TileManager tileManager = new TileManager(this,"/maps/map3.txt");
+		m_room = new Room(1, new Player(this, m_keyH), tileManager);
+		this.player = m_room.getPlayer();
+		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
+		m_keyH.setPlayer(this.player);
+		TileManager tilemanagerbis = new TileManager(this, "/maps/map2.txt");
+		Room r2 = new Room(m_room.getId()+1,player,tilemanagerbis);
+		Porte p = new Porte(1,m_room, r2);
+		r2.setPorte(p, "haut");
+		r2.updatePortes();
+		m_room.setPorte(p, "bas");
+		m_room.updatePortes();
+
+
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
@@ -65,10 +82,10 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		while(m_gameThread != null) { //Tant que le thread du jeu est actif
 			
-			//Permet de mettre à jour les différentes variables du jeu
+			//Permet de mettre ï¿½ jour les diffï¿½rentes variables du jeu
 			this.update();
 			
-			//Dessine sur l'écran le personnage et la map avec les nouvelles informations. la méthode "paintComponent" doit obligatoirement être appelée avec "repaint()"
+			//Dessine sur l'ï¿½cran le personnage et la map avec les nouvelles informations. la mï¿½thode "paintComponent" doit obligatoirement ï¿½tre appelï¿½e avec "repaint()"
 			this.repaint();
 			
 			//Calcule le temps de pause du thread
@@ -92,21 +109,29 @@ public class GamePanel extends JPanel implements Runnable{
 	
 
 	/**
-	 * Mise à jour des données des entités
+	 * Mise ï¿½ jour des donnï¿½es des entitï¿½s
 	 */
 	public void update() {
-		m_player.update();
+		player.update();
 	}
 	
 	/**
-	 * Affichage des éléments
+	 * Affichage des ï¿½lï¿½ments
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		m_tileM.draw(g2);
-		m_player.draw(g2);
+		
+		m_room.getTileManager().draw(g2);
+		player.draw(g2);
 		g2.dispose();
 	}
 	
+	public Room getRoom(){
+		return m_room;
+	}
+
+	public void setRoom(Room r){
+		this.m_room = r;
+	}
 }
