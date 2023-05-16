@@ -32,7 +32,6 @@ public class TileManager {
 		m_tile = new Tile[m_maxTiles];
 		m_mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREE_ROW];
 		this.getTileImage();
-		this.loadMap("/maps/map4.txt");
 		this.mapPath = mapPath;
 		this.loadMap(mapPath);
 	}

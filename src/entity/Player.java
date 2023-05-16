@@ -113,22 +113,22 @@ public class Player extends Entity{
 	}
 	
 	public void deplacement(int code){
-		if(code == 37){
+		if(code == 37 || code == 81){
 			if(!collide(1)){
 				m_x = m_x-getStep();
 			}
 		}
-		if(code == 38){
+		if(code == 38 || code == 90){
 			if(!collide(2)){
 				m_y = m_y-getStep();
 			}
 		}
-		if(code == 39){
+		if(code == 39 || code == 68){
 			if(!collide(3)){
 				m_x = m_x+getStep();
 			}
 		}
-		if(code == 40){
+		if(code == 40 || code == 83){
 			if(!collide(4)){
 				m_y = m_y+getStep();
 			}

@@ -43,21 +43,33 @@ public class GamePanel extends JPanel implements Runnable{
 	public GamePanel() {
 		m_FPS = 60;				
 		
-
+		
 		//Changements
+		//Création de l'handler et du player
 		m_keyH = new KeyHandler();
-		TileManager tileManager = new TileManager(this,"/maps/map3.txt");
-		m_room = new Room(1, new Player(this, m_keyH), tileManager);
-		this.player = m_room.getPlayer();
-		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
+		this.player = new Player(this, m_keyH);
 		m_keyH.setPlayer(this.player);
-		TileManager tilemanagerbis = new TileManager(this, "/maps/map2.txt");
-		Room r2 = new Room(m_room.getId()+1,player,tilemanagerbis);
+		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
+
+
+		//Création de la room 1
+		TileManager tileManager = new TileManager(this,"/maps/map3.txt");
+		m_room = new Room(1, this.player, tileManager);
+		//Création de la room 2
+		TileManager tileManager2 = new TileManager(this, "/maps/map2.txt");
+		Room r2 = new Room(2,this.player,tileManager2);
+		//Création de la room 3
+		TileManager tileManager3 = new TileManager(this, "/maps/map2.txt");
+		Room r3 = new Room(2,this.player,tileManager3);
+		
+		
+		
 		Porte p = new Porte(1,m_room, r2);
-		r2.setPorte(p, "haut");
-		r2.updatePortes();
 		m_room.setPorte(p, "bas");
 		m_room.updatePortes();
+		r2.setPorte(p, "haut");
+		r2.updatePortes();
+		
 
 
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
