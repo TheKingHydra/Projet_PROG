@@ -45,23 +45,23 @@ public class Room {
     public void updatePortes(){
         if (porteBas != null){
             System.out.println("porteBas");
-            tileManager.setTuile(8, 11, 0);
-            tileManager.setTuile(7, 11, 0);
+            tileManager.setTuile(8, 11, 14);
+            tileManager.setTuile(7, 11, 15);
         }
         if (porteHaut != null){
             System.out.println("porteHaut");
-            tileManager.setTuile(8, 0, 0);
-            tileManager.setTuile(7, 0, 0);
+            tileManager.setTuile(8, 0, 11);
+            tileManager.setTuile(7, 0, 10);
         }
         if (porteGauche != null){
             System.out.println("porteGauche");
-            tileManager.setTuile(0, 6, 0);
-            tileManager.setTuile(0, 5, 0);
+            tileManager.setTuile(0, 6, 13);
+            tileManager.setTuile(0, 5, 12);
         }
         if (porteDroite != null){
             System.out.println("porteDroite");
-            tileManager.setTuile(15, 6, 0);
-            tileManager.setTuile(15, 5, 0);
+            tileManager.setTuile(15, 6, 8);
+            tileManager.setTuile(15, 5, 9);
         }
     }
 
