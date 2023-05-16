@@ -11,14 +11,19 @@ import main.GamePanel;
 import main.KeyHandler;
 
 /**
+
  * Défintition du comportement d'un joueur
+
  *
  */
 public class Player extends Entity{
 
 	GamePanel m_gp;
 	KeyHandler m_keyH;
+
 	int monnaie;
+
+	int step;
 
 	
 	/**
@@ -38,13 +43,15 @@ public class Player extends Entity{
 	 * Initialisation des donn�es membres avec des valeurs par d�faut
 	 */
 	protected void setDefaultValues() {
-		m_x = 100;
-		m_y = 100;
+		m_x = 48;
+		m_y = 48;
 		m_speed = 4;
 	}
 	
 	/**
+
 	 * Récupération de l'image du personnage
+
 	 */
 	public void getPlayerImage() {
 		//gestion des expections 
@@ -69,12 +76,15 @@ public class Player extends Entity{
 	 * @param a_g2 Graphics2D 
 	 */
 	public void draw(Graphics2D a_g2) {
+
 		// recupère l'image du joueur
+
 		BufferedImage l_image = m_idleImage;
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
 	}
 	
+
 
 	public void set_monnaie(int n){
 		monnaie = n;
@@ -89,6 +99,14 @@ public class Player extends Entity{
 		if(monnaie>=10){
 			System.out.println("Le solde de monnaie a dépassé 10.");
 		}
+
+	public void setStep(int step){
+		this.step = step;
+	}
+
+	public int getStep(){
+		return step;
+
 	}
 	
 
