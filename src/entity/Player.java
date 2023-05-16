@@ -99,6 +99,7 @@ public class Player extends Entity{
 		if(monnaie>=10){
 			System.out.println("Le solde de monnaie a dépassé 10.");
 		}
+	}
 
 	public void setStep(int step){
 		this.step = step;

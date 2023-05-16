@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import Level.Porte;
 import Level.Room;
 import entity.Player;
 import tile.TileManager;
@@ -41,11 +42,21 @@ public class GamePanel extends JPanel implements Runnable{
 	 */
 	public GamePanel() {
 		m_FPS = 60;				
+		
+
+		//Changements
 		m_keyH = new KeyHandler();
-		m_room = new Room(1, new Player(this, m_keyH), new TileManager(this));
+		TileManager tileManager = new TileManager(this);
+		m_room = new Room(1, new Player(this, m_keyH), tileManager);
 		this.player = m_room.getPlayer();
 		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
 		m_keyH.setPlayer(this.player);
+		m_keyH.setTileManager(tileManager);
+		Porte p = new Porte(1);
+		m_room.setPorte(p, "bas");
+		m_room.updatePortes();
+
+
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);

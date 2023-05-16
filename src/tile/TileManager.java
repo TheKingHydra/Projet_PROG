@@ -129,4 +129,12 @@ public class TileManager {
 		}
 		
 	}
+
+	public void setTuile(int x, int y, int val){
+		m_mapTileNum[x][y] = val;
+	}
+
+	public int getTuile(int x, int y){
+		return m_mapTileNum[x][y];
+	}
 }
