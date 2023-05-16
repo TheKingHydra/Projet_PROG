@@ -22,8 +22,8 @@ public class GamePanel extends JPanel implements Runnable{
 	final int ORIGINAL_TILE_SIZE = 16; 							// une tuile de taille 16x16
 	final int SCALE = 3; 										// �chelle utilis�e pour agrandir l'affichage
 	public final int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE; 	// 48x48
-	public final int MAX_SCREEN_COL = 16;
-	public final int MAX_SCREE_ROW = 12; 					 	// ces valeurs donnent une r�solution 4:3
+	public final int MAX_SCREEN_COL = 15;
+	public final int MAX_SCREE_ROW = 11; 					 	// ces valeurs donnent une r�solution 4:3
 	public final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // 768 pixels
 	public final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREE_ROW;	// 576 pixels
 
@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
 		TileManager tileManager2 = new TileManager(this, "/maps/map2.txt");
 		Room r2 = new Room(2,this.player,tileManager2);
 		//Création de la room 3
-		TileManager tileManager3 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager3 = new TileManager(this, "/maps/map3.txt");
 		Room r3 = new Room(3,this.player,tileManager3);
 		TileManager tileManager4 = new TileManager(this, "/maps/map2.txt");
 		Room r4 = new Room(4,this.player,tileManager4);
@@ -183,4 +183,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setRoom(Room r){
 		this.m_room = r;
 	}
+
+	
 }
