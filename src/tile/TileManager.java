@@ -21,6 +21,7 @@ public class TileManager {
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
 	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
+	private boolean shouldChange;
 	
 	/**
 	 * Constructeur
@@ -161,5 +162,13 @@ public class TileManager {
 
 	public int getTuile(int x, int y){
 		return m_mapTileNum[x][y];
+	}
+
+	public boolean getShouldChange(){
+		return this.shouldChange;
+	}
+
+	public void setShouldChange(boolean b){
+		this.shouldChange=b;
 	}
 }
