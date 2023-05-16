@@ -60,17 +60,53 @@ public class GamePanel extends JPanel implements Runnable{
 		Room r2 = new Room(2,this.player,tileManager2);
 		//Création de la room 3
 		TileManager tileManager3 = new TileManager(this, "/maps/map2.txt");
-		Room r3 = new Room(2,this.player,tileManager3);
-		
-		
+		Room r3 = new Room(3,this.player,tileManager3);
+		TileManager tileManager4 = new TileManager(this, "/maps/map2.txt");
+		Room r4 = new Room(4,this.player,tileManager4);
+		TileManager tileManager5 = new TileManager(this, "/maps/map2.txt");
+		Room r5 = new Room(5,this.player,tileManager5);
+		TileManager tileManager6 = new TileManager(this, "/maps/map2.txt");
+		Room r6 = new Room(6,this.player,tileManager6);
+		TileManager tileManager7 = new TileManager(this, "/maps/map2.txt");
+		Room r7 = new Room(7,this.player,tileManager7);
+		TileManager tileManager8 = new TileManager(this, "/maps/map2.txt");
+		Room r8 = new Room(8,this.player,tileManager8);
+		TileManager tileManager9 = new TileManager(this, "/maps/map2.txt");
+		Room r9 = new Room(9,this.player,tileManager9);
 		
 		Porte p = new Porte(1,m_room, r2);
+		Porte p2 = new Porte(2,r2,r3);
+		Porte p3 = new Porte(3,r3, r4);
+		Porte p4 = new Porte(4,r4,r5);
+		Porte p5 = new Porte(5,r5, r6);
+		Porte p6 = new Porte(6,r5,r7);
+		Porte p7 = new Porte(7,r7, r8);
+		Porte p8 = new Porte(8,r8,r9);
 		m_room.setPorte(p, "bas");
 		m_room.updatePortes();
 		r2.setPorte(p, "haut");
+		r2.setPorte(p2,"droite");
 		r2.updatePortes();
-		
-
+		r3.setPorte(p2, "gauche");
+		r3.setPorte(p3,"droite");
+		r3.updatePortes();
+		r4.setPorte(p3, "gauche");
+		r4.setPorte(p4,"droite");
+		r4.updatePortes();
+		r5.setPorte(p4, "gauche");
+		r5.setPorte(p5,"droite");
+		r5.setPorte(p6,"bas");
+		r5.updatePortes();
+		r6.setPorte(p5, "gauche");
+		r6.updatePortes();
+		r7.setPorte(p6,"haut");
+		r7.setPorte(p7,"bas");
+		r7.updatePortes();
+		r8.setPorte(p7,"haut");
+		r8.setPorte(p8,"gauche");
+		r8.updatePortes();
+		r9.setPorte(p8, "droite");
+		r9.updatePortes();
 
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
