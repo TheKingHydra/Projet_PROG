@@ -64,15 +64,15 @@ public class GamePanel extends JPanel implements Runnable{
 		Room r3 = new Room(3,this.player,tileManager3);
 		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
 		Room r4 = new Room(4,this.player,tileManager4);
-		TileManager tileManager5 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager5 = new TileManager(this, "/maps/map5.txt");
 		Room r5 = new Room(5,this.player,tileManager5);
-		TileManager tileManager6 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager6 = new TileManager(this, "/maps/map6.txt");
 		Room r6 = new Room(6,this.player,tileManager6);
-		TileManager tileManager7 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager7 = new TileManager(this, "/maps/map7.txt");
 		Room r7 = new Room(7,this.player,tileManager7);
-		TileManager tileManager8 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager8 = new TileManager(this, "/maps/map8.txt");
 		Room r8 = new Room(8,this.player,tileManager8);
-		TileManager tileManager9 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
 		Room r9 = new Room(9,this.player,tileManager9);
 		
 		Porte p = new Porte(1,m_room, r2);

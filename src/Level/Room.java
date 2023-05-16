@@ -77,7 +77,8 @@ public class Room {
         int tilex = (player.m_x/player.getStep());
 		int tiley = (player.m_y/player.getStep());
         int val = tileManager.getTuile(tilex, tiley);
-        if (val == 1 || val == 3) {
+        if (val == 1 || val == 3 || val == 18) {
+        //   Planks   /   Path   /  Sandstone
             if(tilex == 0) {
                 r = porteGauche.getOtherRoom(this.idRoom);
                 player.m_x = player.getStep()*(player.getMaxScreenCol()-1);

@@ -19,7 +19,7 @@ import main.GamePanel;
 public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
-	int m_maxTiles = 25;	//nombre maximum de tiles chargeable dans le jeu
+	int m_maxTiles = 64;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
 	String mapPath;
 	
@@ -92,25 +92,35 @@ public class TileManager {
             m_tile[16] = new Tile();
 			m_tile[16].m_image = ImageIO.read(getClass().getResource("/tiles/cobblestone_stairs.png"));
 
-
 			m_tile[17] = new Tile();
-			m_tile[17].m_image = ImageIO.read(getClass().getResource("/tiles/stone_bricks.png"));
+			m_tile[17].m_image = ImageIO.read(getClass().getResource("/tiles/sand.png"));
 
 			m_tile[18] = new Tile();
-			m_tile[18].m_image = ImageIO.read(getClass().getResource("/tiles/obsidian.png"));
+			m_tile[18].m_image = ImageIO.read(getClass().getResource("/tiles/sandstone_top.png"));
 
 			m_tile[19] = new Tile();
-			m_tile[19].m_image = ImageIO.read(getClass().getResource("/tiles/glowstone.png"));
+			m_tile[19].m_image = ImageIO.read(getClass().getResource("/tiles/lava_still.png"));
 
 			m_tile[20] = new Tile();
-			m_tile[20].m_image = ImageIO.read(getClass().getResource("/tiles/cracked_stone_bricks.png"));
+			m_tile[20].m_image = ImageIO.read(getClass().getResource("/tiles/obsidian.png"));
 
 			m_tile[21] = new Tile();
-			m_tile[21].m_image = ImageIO.read(getClass().getResource("/tiles/chiseled_stone_bricks.png"));
+			m_tile[21].m_image = ImageIO.read(getClass().getResource("/tiles/netherrack.png"));
 
+			m_tile[22] = new Tile();
+			m_tile[22].m_image = ImageIO.read(getClass().getResource("/tiles/chest.png"));
 
+			m_tile[23] = new Tile();
+			m_tile[23].m_image = ImageIO.read(getClass().getResource("/tiles/chest_left.png"));
 
+			m_tile[24] = new Tile();
+			m_tile[24].m_image = ImageIO.read(getClass().getResource("/tiles/chest_right.png"));
 
+			m_tile[25] = new Tile();
+			m_tile[25].m_image = ImageIO.read(getClass().getResource("/tiles/chest_down.png"));
+
+			m_tile[26] = new Tile();
+			m_tile[26].m_image = ImageIO.read(getClass().getResource("/tiles/stone.png"));
 
 			
 		} catch (IOException e) {
