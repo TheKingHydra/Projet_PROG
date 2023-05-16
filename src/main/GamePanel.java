@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
 		//Création de la room 3
 		TileManager tileManager3 = new TileManager(this, "/maps/map3.txt");
 		Room r3 = new Room(3,this.player,tileManager3);
-		TileManager tileManager4 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
 		Room r4 = new Room(4,this.player,tileManager4);
 		TileManager tileManager5 = new TileManager(this, "/maps/map2.txt");
 		Room r5 = new Room(5,this.player,tileManager5);

@@ -81,7 +81,7 @@ public class Room {
             if(tilex == 0) {
                 r = porteGauche.getOtherRoom(this.idRoom);
                 player.m_x = player.getStep()*(player.getMaxScreenCol()-1);
-            }
+            }   
             if(tilex == 14) {
                 r = porteDroite.getOtherRoom(this.idRoom);
                 player.m_x = 0;

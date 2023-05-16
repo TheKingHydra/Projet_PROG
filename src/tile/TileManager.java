@@ -66,16 +66,16 @@ public class TileManager {
 			m_tile[7].m_image = ImageIO.read(getClass().getResource("/tiles/Grass&Torch down.png"));
 
 			m_tile[8] = new Tile();
-			m_tile[8].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT.png"));
+			m_tile[8].m_image = ImageIO.read(getClass().getResource("/tiles/black_wool.png"));
 
 			m_tile[9] = new Tile();
-			m_tile[9].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2.png"));
+			m_tile[9].m_image = ImageIO.read(getClass().getResource("/tiles/oak_planks.png"));
 
 			m_tile[10] = new Tile();
-			m_tile[10].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT_H.png"));
+			m_tile[10].m_image = ImageIO.read(getClass().getResource("/tiles/oak_log_top.png"));
 
 			m_tile[11] = new Tile();
-			m_tile[11].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2_H.png"));
+			m_tile[11].m_image = ImageIO.read(getClass().getResource("/tiles/farmland_moist.png"));
 
 			m_tile[12] = new Tile();
 			m_tile[12].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT_L.png"));
