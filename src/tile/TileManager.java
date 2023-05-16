@@ -19,7 +19,7 @@ import main.GamePanel;
 public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
-	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
+	int m_maxTiles = 25;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
 	String mapPath;
 	
@@ -32,6 +32,7 @@ public class TileManager {
 		m_tile = new Tile[m_maxTiles];
 		m_mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREE_ROW];
 		this.getTileImage();
+		this.loadMap("/maps/map4.txt");
 		this.mapPath = mapPath;
 		this.loadMap(mapPath);
 	}
@@ -90,7 +91,29 @@ public class TileManager {
 			m_tile[15].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2_G.png"));
 
 
-			
+            m_tile[16] = new Tile();
+			m_tile[16].m_image = ImageIO.read(getClass().getResource("/tiles/stone.png"));
+
+
+			m_tile[17] = new Tile();
+			m_tile[17].m_image = ImageIO.read(getClass().getResource("/tiles/stone_bricks.png"));
+
+			m_tile[18] = new Tile();
+			m_tile[18].m_image = ImageIO.read(getClass().getResource("/tiles/obsidian.png"));
+
+			m_tile[19] = new Tile();
+			m_tile[19].m_image = ImageIO.read(getClass().getResource("/tiles/glowstone.png"));
+
+			m_tile[20] = new Tile();
+			m_tile[20].m_image = ImageIO.read(getClass().getResource("/tiles/cracked_stone_bricks.png"));
+
+			m_tile[21] = new Tile();
+			m_tile[21].m_image = ImageIO.read(getClass().getResource("/tiles/chiseled_stone_bricks.png"));
+
+
+
+
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();
