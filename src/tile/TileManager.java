@@ -19,7 +19,7 @@ import main.GamePanel;
 public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
-	int m_maxTiles = 10;	//nombre maximum de tiles chargeable dans le jeu
+	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
 	private boolean shouldChange;
 	
@@ -69,6 +69,24 @@ public class TileManager {
 
 			m_tile[9] = new Tile();
 			m_tile[9].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2.png"));
+
+			m_tile[10] = new Tile();
+			m_tile[10].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT_H.png"));
+
+			m_tile[11] = new Tile();
+			m_tile[11].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2_H.png"));
+
+			m_tile[12] = new Tile();
+			m_tile[12].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT_L.png"));
+
+			m_tile[13] = new Tile();
+			m_tile[13].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2_L.png"));
+
+			m_tile[14] = new Tile();
+			m_tile[14].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT_G.png"));
+
+			m_tile[15] = new Tile();
+			m_tile[15].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2_G.png"));
 
 
 			
