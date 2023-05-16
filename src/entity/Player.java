@@ -44,8 +44,8 @@ public class Player extends Entity{
 	 * Initialisation des donn�es membres avec des valeurs par d�faut
 	 */
 	protected void setDefaultValues() {
-		m_x = 48;
-		m_y = 48;
+		m_x = ((m_gp.MAX_SCREEN_COL/2)-1)*m_gp.TILE_SIZE;
+		m_y = ((m_gp.MAX_SCREE_ROW/2)-1)*m_gp.TILE_SIZE;
 		m_speed = 4;
 	}
 	
