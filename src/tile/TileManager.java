@@ -21,18 +21,19 @@ public class TileManager {
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
 	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
-	private boolean shouldChange;
+	String mapPath;
 	
 	/**
 	 * Constructeur
 	 * @param gp
 	 */
-	public TileManager(GamePanel gp) {
+	public TileManager(GamePanel gp, String mapPath) {
 		this.m_gp =  gp;
 		m_tile = new Tile[m_maxTiles];
 		m_mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREE_ROW];
 		this.getTileImage();
-		this.loadMap("/maps/map3.txt");
+		this.mapPath = mapPath;
+		this.loadMap(mapPath);
 	}
 	
 	/**
@@ -164,11 +165,5 @@ public class TileManager {
 		return m_mapTileNum[x][y];
 	}
 
-	public boolean getShouldChange(){
-		return this.shouldChange;
-	}
 
-	public void setShouldChange(boolean b){
-		this.shouldChange=b;
-	}
 }

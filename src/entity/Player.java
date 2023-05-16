@@ -139,14 +139,18 @@ public class Player extends Entity{
 		int tilex = (m_x/getStep());
 		int tiley = (m_y/getStep());
 		TileManager tileManager = m_gp.getRoom().getTileManager();
+		//Liste des cases autorisées.
+		boolean autorise;
 		if(i == 1){
 			if (tilex == 0){
 				//Changer Room
-				tileManager.setShouldChange(true);
+				m_gp.setRoom(m_gp.getRoom().changerRoom());
+				m_x = getStep()*(m_gp.MAX_SCREEN_COL-1);
 				return true;
 			}
 			int val = tileManager.getTuile(tilex-1,tiley);
-			if (val == 8 || val == 9){ //Liste des cases autorisées.
+			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			if (autorise){ //Liste des cases autorisées.
 				return false;
 			}
 			
@@ -155,11 +159,13 @@ public class Player extends Entity{
 		if(i == 2){
 			if (tiley == 0){
 				//Changer Room
-				tileManager.setShouldChange(true);
+				m_gp.setRoom(m_gp.getRoom().changerRoom());
+				m_y = getStep()*(m_gp.MAX_SCREE_ROW-1);
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley-1);
-			if (val == 8 || val == 9){
+			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			if (autorise){
 				return false;
 			}
 			
@@ -168,11 +174,13 @@ public class Player extends Entity{
 		if(i == 3){
 			if (tilex == 15){
 				//Changer Room
-				tileManager.setShouldChange(true);
+				m_gp.setRoom(m_gp.getRoom().changerRoom());
+				m_x = 0;
 				return true;
 			}
 			int val = tileManager.getTuile(tilex+1,tiley);
-			if (val == 8 || val == 9){
+			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			if (autorise){
 				return false;
 			}
 			
@@ -181,11 +189,13 @@ public class Player extends Entity{
 		if(i == 4){
 			if (tiley == 11){
 				//Changer Room
-				tileManager.setShouldChange(true);
+				m_gp.setRoom(m_gp.getRoom().changerRoom());
+				m_y = 0;
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley+1);
-			if (val == 8 || val == 9){
+			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			if (autorise){
 				return false;
 			}
 			return !(val==0);

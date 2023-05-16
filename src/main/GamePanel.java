@@ -46,12 +46,16 @@ public class GamePanel extends JPanel implements Runnable{
 
 		//Changements
 		m_keyH = new KeyHandler();
-		TileManager tileManager = new TileManager(this);
+		TileManager tileManager = new TileManager(this,"/maps/map3.txt");
 		m_room = new Room(1, new Player(this, m_keyH), tileManager);
 		this.player = m_room.getPlayer();
 		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
 		m_keyH.setPlayer(this.player);
-		Porte p = new Porte(1);
+		TileManager tilemanagerbis = new TileManager(this, "/maps/map2.txt");
+		Room r2 = new Room(m_room.getId()+1,player,tilemanagerbis);
+		Porte p = new Porte(1,m_room, r2);
+		r2.setPorte(p, "haut");
+		r2.updatePortes();
 		m_room.setPorte(p, "bas");
 		m_room.updatePortes();
 
@@ -125,5 +129,9 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public Room getRoom(){
 		return m_room;
+	}
+
+	public void setRoom(Room r){
+		this.m_room = r;
 	}
 }
