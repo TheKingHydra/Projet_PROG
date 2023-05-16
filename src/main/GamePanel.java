@@ -22,8 +22,8 @@ public class GamePanel extends JPanel implements Runnable{
 	final int ORIGINAL_TILE_SIZE = 16; 							// une tuile de taille 16x16
 	final int SCALE = 3; 										// �chelle utilis�e pour agrandir l'affichage
 	public final int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE; 	// 48x48
-	public final int MAX_SCREEN_COL = 16;
-	public final int MAX_SCREE_ROW = 12; 					 	// ces valeurs donnent une r�solution 4:3
+	public final int MAX_SCREEN_COL = 15;
+	public final int MAX_SCREE_ROW = 11; 					 	// ces valeurs donnent une r�solution 4:3
 	public final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // 768 pixels
 	public final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREE_ROW;	// 576 pixels
 
@@ -53,25 +53,26 @@ public class GamePanel extends JPanel implements Runnable{
 
 
 		//Création de la room 1
-		TileManager tileManager = new TileManager(this,"/maps/map3.txt");
+		TileManager tileManager = new TileManager(this,"/maps/map.txt");
 		m_room = new Room(1, this.player, tileManager);
+		
 		//Création de la room 2
 		TileManager tileManager2 = new TileManager(this, "/maps/map2.txt");
 		Room r2 = new Room(2,this.player,tileManager2);
 		//Création de la room 3
-		TileManager tileManager3 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager3 = new TileManager(this, "/maps/map3.txt");
 		Room r3 = new Room(3,this.player,tileManager3);
-		TileManager tileManager4 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
 		Room r4 = new Room(4,this.player,tileManager4);
-		TileManager tileManager5 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager5 = new TileManager(this, "/maps/map5.txt");
 		Room r5 = new Room(5,this.player,tileManager5);
-		TileManager tileManager6 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager6 = new TileManager(this, "/maps/map6.txt");
 		Room r6 = new Room(6,this.player,tileManager6);
-		TileManager tileManager7 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager7 = new TileManager(this, "/maps/map7.txt");
 		Room r7 = new Room(7,this.player,tileManager7);
-		TileManager tileManager8 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager8 = new TileManager(this, "/maps/map8.txt");
 		Room r8 = new Room(8,this.player,tileManager8);
-		TileManager tileManager9 = new TileManager(this, "/maps/map2.txt");
+		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
 		Room r9 = new Room(9,this.player,tileManager9);
 		
 		Porte p = new Porte(1,m_room, r2);
@@ -182,4 +183,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setRoom(Room r){
 		this.m_room = r;
 	}
+
+	
 }
