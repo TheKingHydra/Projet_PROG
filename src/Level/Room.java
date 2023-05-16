@@ -34,6 +34,10 @@ public class Room {
         return this.player;
     }
 
+    public int getId(){
+        return idRoom;
+    }
+
     public TileManager getTileManager(){
         return this.tileManager;
     }
@@ -73,6 +77,27 @@ public class Room {
         }
         if(s == "haut"){
             porteHaut = p;
+        }
+    }
+
+    public Room changerRoom(){
+        if (tileManager.getShouldChange()){
+            Room r = this;
+            if(player.m_x == 0) {
+                r = porteGauche.getOtherRoom(this.idRoom);
+            }
+            if(player.m_x == 720) {
+                r = porteDroite.getOtherRoom(this.idRoom);
+            }
+            if(player.m_y == 0) {
+                r = porteHaut.getOtherRoom(this.idRoom);
+            }
+            if(player.m_y == 576) {
+                r = porteBas.getOtherRoom(this.idRoom);
+            }
+            return r;
+        } else {
+            return null;
         }
     }
 }

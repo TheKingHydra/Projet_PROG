@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread m_gameThread;
 	Player player;
 		
-	Room m_room;
+	private Room m_room;
 	
 	/**
 	 * Constructeur
@@ -51,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable{
 		this.player = m_room.getPlayer();
 		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
 		m_keyH.setPlayer(this.player);
-		m_keyH.setTileManager(tileManager);
 		Porte p = new Porte(1);
 		m_room.setPorte(p, "bas");
 		m_room.updatePortes();
@@ -118,9 +117,13 @@ public class GamePanel extends JPanel implements Runnable{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		
 		m_room.getTileManager().draw(g2);
 		player.draw(g2);
 		g2.dispose();
 	}
 	
+	public Room getRoom(){
+		return m_room;
+	}
 }

@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import tile.TileManager;
 
 /**
 
@@ -111,5 +112,86 @@ public class Player extends Entity{
 
 	}
 	
+	public void deplacement(int code){
+		if(code == 37){
+			if(!collide(1)){
+				m_x = m_x-getStep();
+			}
+		}
+		if(code == 38){
+			if(!collide(2)){
+				m_y = m_y-getStep();
+			}
+		}
+		if(code == 39){
+			if(!collide(3)){
+				m_x = m_x+getStep();
+			}
+		}
+		if(code == 40){
+			if(!collide(4)){
+				m_y = m_y+getStep();
+			}
+		}
+	}
+
+	public boolean collide(int i){
+		int tilex = (m_x/getStep());
+		int tiley = (m_y/getStep());
+		TileManager tileManager = m_gp.getRoom().getTileManager();
+		if(i == 1){
+			if (tilex == 0){
+				//Changer Room
+				tileManager.setShouldChange(true);
+				return true;
+			}
+			int val = tileManager.getTuile(tilex-1,tiley);
+			if (val == 8 || val == 9){ //Liste des cases autorisées.
+				return false;
+			}
+			
+			return !(val==0);
+		}
+		if(i == 2){
+			if (tiley == 0){
+				//Changer Room
+				tileManager.setShouldChange(true);
+				return true;
+			}
+			int val = tileManager.getTuile(tilex,tiley-1);
+			if (val == 8 || val == 9){
+				return false;
+			}
+			
+			return !(val==0);
+		}
+		if(i == 3){
+			if (tilex == 15){
+				//Changer Room
+				tileManager.setShouldChange(true);
+				return true;
+			}
+			int val = tileManager.getTuile(tilex+1,tiley);
+			if (val == 8 || val == 9){
+				return false;
+			}
+			
+			return !(val==0);
+		}
+		if(i == 4){
+			if (tiley == 11){
+				//Changer Room
+				tileManager.setShouldChange(true);
+				return true;
+			}
+			int val = tileManager.getTuile(tilex,tiley+1);
+			if (val == 8 || val == 9){
+				return false;
+			}
+			return !(val==0);
+		}
+		
+		return false;
+	}
 
 }
