@@ -11,7 +11,9 @@ import main.GamePanel;
 import main.KeyHandler;
 
 /**
- * D�fintition du comportement d'un joueur
+
+ * Défintition du comportement d'un joueur
+
  *
  */
 public class Player extends Entity{
@@ -19,7 +21,10 @@ public class Player extends Entity{
 	GamePanel m_gp;
 	KeyHandler m_keyH;
 
+	int monnaie;
+
 	int step;
+
 	
 	/**
 	 * Constructeur de Player
@@ -31,6 +36,7 @@ public class Player extends Entity{
 		this.m_keyH = a_keyH;
 		this.setDefaultValues();
 		this.getPlayerImage();
+		this.monnaie = 0;
 	}
 	
 	/**
@@ -43,7 +49,9 @@ public class Player extends Entity{
 	}
 	
 	/**
-	 * R�cup�ration de l'image du personnage
+
+	 * Récupération de l'image du personnage
+
 	 */
 	public void getPlayerImage() {
 		//gestion des expections 
@@ -68,18 +76,38 @@ public class Player extends Entity{
 	 * @param a_g2 Graphics2D 
 	 */
 	public void draw(Graphics2D a_g2) {
-		// r�cup�re l'image du joueur
+
+		// recupère l'image du joueur
+
 		BufferedImage l_image = m_idleImage;
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
 	}
 	
+
+
+	public void set_monnaie(int n){
+		monnaie = n;
+	}
+
+	public int get_monnaie(){
+		return(monnaie);
+	}
+
+	public void add_monnaie(int nb){
+		monnaie += nb;
+		if(monnaie>=10){
+			System.out.println("Le solde de monnaie a dépassé 10.");
+		}
+
 	public void setStep(int step){
 		this.step = step;
 	}
 
 	public int getStep(){
 		return step;
+
 	}
 	
+
 }
