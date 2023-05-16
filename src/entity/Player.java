@@ -101,6 +101,7 @@ public class Player extends Entity{
 		}
 	}
 
+
 	public void setStep(int step){
 		this.step = step;
 	}

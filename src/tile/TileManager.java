@@ -31,7 +31,7 @@ public class TileManager {
 		m_tile = new Tile[m_maxTiles];
 		m_mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREE_ROW];
 		this.getTileImage();
-		this.loadMap("/maps/map2.txt");
+		this.loadMap("/maps/map3.txt");
 	}
 	
 	/**
@@ -62,6 +62,13 @@ public class TileManager {
 
 			m_tile[7] = new Tile();
 			m_tile[7].m_image = ImageIO.read(getClass().getResource("/tiles/BRIDGE.png"));
+
+			m_tile[8] = new Tile();
+			m_tile[8].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT.png"));
+
+			m_tile[9] = new Tile();
+			m_tile[9].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS_LIGHT2.png"));
+
 
 			
 			
