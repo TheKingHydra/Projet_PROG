@@ -44,6 +44,8 @@ public class GamePanel extends JPanel implements Runnable{
 		m_keyH = new KeyHandler();
 		m_room = new Room(1, new Player(this, m_keyH), new TileManager(this));
 		this.player = m_room.getPlayer();
+		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
+		m_keyH.setPlayer(this.player);
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);

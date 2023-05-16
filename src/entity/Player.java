@@ -11,13 +11,15 @@ import main.GamePanel;
 import main.KeyHandler;
 
 /**
- * Défintition du comportement d'un joueur
+ * Dï¿½fintition du comportement d'un joueur
  *
  */
 public class Player extends Entity{
 
 	GamePanel m_gp;
 	KeyHandler m_keyH;
+
+	int step;
 	
 	/**
 	 * Constructeur de Player
@@ -32,16 +34,16 @@ public class Player extends Entity{
 	}
 	
 	/**
-	 * Initialisation des données membres avec des valeurs par défaut
+	 * Initialisation des donnï¿½es membres avec des valeurs par dï¿½faut
 	 */
 	protected void setDefaultValues() {
-		m_x = 100;
-		m_y = 100;
+		m_x = 48;
+		m_y = 48;
 		m_speed = 4;
 	}
 	
 	/**
-	 * Récupération de l'image du personnage
+	 * Rï¿½cupï¿½ration de l'image du personnage
 	 */
 	public void getPlayerImage() {
 		//gestion des expections 
@@ -53,7 +55,7 @@ public class Player extends Entity{
 	}
 	
 	/**
-	 * Mise à jour des données du joueur
+	 * Mise ï¿½ jour des donnï¿½es du joueur
 	 */
 	public void update() {
 		
@@ -62,15 +64,22 @@ public class Player extends Entity{
 	}
 	
 	/**
-	 * Affichage du l'image du joueur dans la fenêtre du jeu
+	 * Affichage du l'image du joueur dans la fenï¿½tre du jeu
 	 * @param a_g2 Graphics2D 
 	 */
 	public void draw(Graphics2D a_g2) {
-		// récupère l'image du joueur
+		// rï¿½cupï¿½re l'image du joueur
 		BufferedImage l_image = m_idleImage;
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
 	}
 	
+	public void setStep(int step){
+		this.step = step;
+	}
+
+	public int getStep(){
+		return step;
+	}
 	
 }
