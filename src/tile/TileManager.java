@@ -137,6 +137,9 @@ public class TileManager {
 			m_tile[31] = new Tile();
 			m_tile[31].m_image = ImageIO.read(getClass().getResource("/tiles/nether_gold_ore.png"));
 
+			m_tile[32] = new Tile();
+			m_tile[32].m_image = ImageIO.read(getClass().getResource("/tiles/netherrack.png"));
+
 
 
 
