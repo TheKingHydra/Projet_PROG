@@ -19,7 +19,7 @@ public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
 	int m_maxTiles = 64;	//nombre maximum de tiles chargeable dans le jeu
-	int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
+	public int m_mapTileNum[][];	//r�partition des tiles dans la carte du jeu
 	String mapPath;
 	
 	/**
@@ -142,7 +142,8 @@ public class TileManager {
 			m_tile[33] = new Tile();
 			m_tile[33].m_image = ImageIO.read(getClass().getResource("/tiles/nether_bricks.png"));
 
-
+			m_tile[63] = new Tile();
+			m_tile[63].m_image = ImageIO.read(getClass().getResource("/tiles/gameover.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
