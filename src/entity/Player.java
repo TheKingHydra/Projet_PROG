@@ -359,4 +359,8 @@ public class Player extends Entity{
 	public ArrayList<Item> getItems(){
 		return items;
 	}
+
+	public void setImage(BufferedImage img){
+
+	}
 }
