@@ -201,7 +201,7 @@ public class Player extends Entity{
 				
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){ //Liste des cases autorisées.
 				return false;
 			}
@@ -227,7 +227,7 @@ public class Player extends Entity{
 				}
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26|| val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -253,7 +253,7 @@ public class Player extends Entity{
 				}
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -280,7 +280,7 @@ public class Player extends Entity{
 			}
 
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -362,7 +362,7 @@ public class Player extends Entity{
 				}
 			}
 			if(m_gp.getRoom().getId()==11){
-				if ((tilex == 0 || tilex == 2)&&(tiley == 4 || tiley == 5)){
+				if ((tilex == 1 || tilex == 3)&&(tiley == 3 || tiley == 4)){
 					m_gp.setRoom(m_gp.getRoom().changerRoom());
 				}
 			}

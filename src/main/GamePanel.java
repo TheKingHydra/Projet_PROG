@@ -94,7 +94,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		
 		Room r6 = new Room(6,this.player,tileManager6,entities);
-		System.out.println(entities.size());
 		//Création de la room 7
 		TileManager tileManager7 = new TileManager(this, "/maps/map7.txt");
 		Room r7 = new Room(7,this.player,tileManager7,empty);
@@ -124,7 +123,6 @@ public class GamePanel extends JPanel implements Runnable{
 		Porte p6 = new Porte(6,r5,r7);
 		Porte p7 = new Porte(7,r7, r8);
 		Porte p8 = new Porte(8,r8,r9);
-
 		Porte p9 = new Porte(9,r9,r11);
 		Porte p10 = new Porte(10,r11,r12);
 		Porte p11 = new Porte(11,r12,r13);
@@ -147,37 +145,13 @@ public class GamePanel extends JPanel implements Runnable{
 		r9.setPorte(p8, "droite");
 
 		r9.setPorte(p9, "nether");
-		r11.setPorte(p9, "nether2");
+		r11.setPorte(p9, "nether");
 		r11.setPorte(p10,"droite");
 		r12.setPorte(p10,"gauche");
 		r12.setPorte(p11,"droite");
 		r13.setPorte(p11,"gauche");
 
-		// //Création du Niveau Overworld
-		// ArrayList<Room> r_liste = new ArrayList<Room>();
-		// r_liste.add(r1);
-		// r_liste.add(r2);
-		// r_liste.add(r3);
-		// r_liste.add(r4);
-		// r_liste.add(r5);
-		// r_liste.add(r6);
-		// r_liste.add(r7);
-		// r_liste.add(r8);
-		// r_liste.add(r9);
-		// ArrayList<Porte> p_liste = new ArrayList<Porte>();
-		// p_liste.add(p);
-		// p_liste.add(p2);
-		// p_liste.add(p3);
-		// p_liste.add(p4);
-		// p_liste.add(p5);
-		// p_liste.add(p6);
-		// p_liste.add(p7);
-		// p_liste.add(p8);
-		// this.m_niveau = new Niveau(r_liste,p_liste);
-		
-
-		
-		
+		//Fin création niveau
 
 		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
