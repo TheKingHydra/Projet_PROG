@@ -44,24 +44,16 @@ public class Room {
 
     public void updatePortes(){
         if (porteBas != null){
-            System.out.println("porteBas");
-            tileManager.setTuile(8, 11, 14);
-            tileManager.setTuile(7, 11, 15);
+            
         }
         if (porteHaut != null){
-            System.out.println("porteHaut");
-            tileManager.setTuile(8, 0, 11);
-            tileManager.setTuile(7, 0, 10);
+            
         }
         if (porteGauche != null){
-            System.out.println("porteGauche");
-            tileManager.setTuile(0, 6, 13);
-            tileManager.setTuile(0, 5, 12);
+            
         }
         if (porteDroite != null){
-            System.out.println("porteDroite");
-            tileManager.setTuile(15, 6, 8);
-            tileManager.setTuile(15, 5, 9);
+            
         }
     }
 
@@ -84,19 +76,28 @@ public class Room {
         Room r = this;
         int tilex = (player.m_x/player.getStep());
 		int tiley = (player.m_y/player.getStep());
-        if(tilex == 0) {
-            r = porteGauche.getOtherRoom(this.idRoom);
-        }
-        if(tilex == 15) {
-            r = porteDroite.getOtherRoom(this.idRoom);
-        }
-        if(tiley == 0) {
-            r = porteHaut.getOtherRoom(this.idRoom);
-        }
-        if(tiley == 11) {
-            r = porteBas.getOtherRoom(this.idRoom);
+        int val = tileManager.getTuile(tilex, tiley);
+        if (val == 1 || val == 3 || val == 18) {
+        //   Planks   /   Path   /  Sandstone
+            if(tilex == 0) {
+                r = porteGauche.getOtherRoom(this.idRoom);
+                player.m_x = player.getStep()*(player.getMaxScreenCol()-1);
+            }   
+            if(tilex == 14) {
+                r = porteDroite.getOtherRoom(this.idRoom);
+                player.m_x = 0;
+            }
+            if(tiley == 0) {
+                r = porteHaut.getOtherRoom(this.idRoom);
+                player.m_y = player.getStep()*(player.getMaxScreenRow()-1);
+            }
+            if(tiley == 10) {
+                r = porteBas.getOtherRoom(this.idRoom);
+                player.m_y = 0;
+            }
         }
         return r;
+        
     }
 }
 

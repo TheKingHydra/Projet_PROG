@@ -44,8 +44,8 @@ public class Player extends Entity{
 	 * Initialisation des donn�es membres avec des valeurs par d�faut
 	 */
 	protected void setDefaultValues() {
-		m_x = 48;
-		m_y = 48;
+		m_x = 7*m_gp.TILE_SIZE;
+		m_y = 5*m_gp.TILE_SIZE;
 		m_speed = 4;
 	}
 	
@@ -113,22 +113,22 @@ public class Player extends Entity{
 	}
 	
 	public void deplacement(int code){
-		if(code == 37){
+		if(code == 37 || code == 81){
 			if(!collide(1)){
 				m_x = m_x-getStep();
 			}
 		}
-		if(code == 38){
+		if(code == 38 || code == 90){
 			if(!collide(2)){
 				m_y = m_y-getStep();
 			}
 		}
-		if(code == 39){
+		if(code == 39 || code == 68){
 			if(!collide(3)){
 				m_x = m_x+getStep();
 			}
 		}
-		if(code == 40){
+		if(code == 40 || code == 83){
 			if(!collide(4)){
 				m_y = m_y+getStep();
 			}
@@ -145,11 +145,10 @@ public class Player extends Entity{
 			if (tilex == 0){
 				//Changer Room
 				m_gp.setRoom(m_gp.getRoom().changerRoom());
-				m_x = getStep()*(m_gp.MAX_SCREEN_COL-1);
 				return true;
 			}
 			int val = tileManager.getTuile(tilex-1,tiley);
-			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
 			if (autorise){ //Liste des cases autorisées.
 				return false;
 			}
@@ -160,11 +159,10 @@ public class Player extends Entity{
 			if (tiley == 0){
 				//Changer Room
 				m_gp.setRoom(m_gp.getRoom().changerRoom());
-				m_y = getStep()*(m_gp.MAX_SCREE_ROW-1);
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley-1);
-			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
 			if (autorise){
 				return false;
 			}
@@ -172,14 +170,13 @@ public class Player extends Entity{
 			return !(val==0);
 		}
 		if(i == 3){
-			if (tilex == 15){
+			if (tilex == 14){
 				//Changer Room
 				m_gp.setRoom(m_gp.getRoom().changerRoom());
-				m_x = 0;
 				return true;
 			}
 			int val = tileManager.getTuile(tilex+1,tiley);
-			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
 			if (autorise){
 				return false;
 			}
@@ -187,14 +184,13 @@ public class Player extends Entity{
 			return !(val==0);
 		}
 		if(i == 4){
-			if (tiley == 11){
+			if (tiley == 10){
 				//Changer Room
 				m_gp.setRoom(m_gp.getRoom().changerRoom());
-				m_y = 0;
 				return true;
 			}
 			int val = tileManager.getTuile(tilex,tiley+1);
-			autorise = (val == 8 || val == 9 || val == 10 || val == 11 || val == 12 || val == 13 || val == 14 || val == 15);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
 			if (autorise){
 				return false;
 			}
@@ -204,4 +200,11 @@ public class Player extends Entity{
 		return false;
 	}
 
+	public int getMaxScreenRow(){
+		return m_gp.MAX_SCREE_ROW;
+	}
+
+	public int getMaxScreenCol(){
+		return m_gp.MAX_SCREEN_COL;
+	}
 }
