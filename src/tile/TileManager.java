@@ -121,6 +121,27 @@ public class TileManager {
 			m_tile[26] = new Tile();
 			m_tile[26].m_image = ImageIO.read(getClass().getResource("/tiles/stone.png"));
 
+			m_tile[27] = new Tile();
+			m_tile[27].m_image = ImageIO.read(getClass().getResource("/tiles/glowstone.png"));
+
+			m_tile[28] = new Tile();
+			m_tile[28].m_image = ImageIO.read(getClass().getResource("/tiles/fire.png"));
+
+			m_tile[29] = new Tile();
+			m_tile[29].m_image = ImageIO.read(getClass().getResource("/tiles/nether_bricks.png"));
+
+			m_tile[30] = new Tile();
+			m_tile[30].m_image = ImageIO.read(getClass().getResource("/tiles/nether_quartz_ore.png"));
+
+			m_tile[31] = new Tile();
+			m_tile[31].m_image = ImageIO.read(getClass().getResource("/tiles/nether_gold_ore.png"));
+
+			m_tile[32] = new Tile();
+			m_tile[32].m_image = ImageIO.read(getClass().getResource("/tiles/netherrack.png"));
+
+
+
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();
