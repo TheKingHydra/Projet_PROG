@@ -1,14 +1,14 @@
 package Level;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Niveau {
-	private List<Room> listeRoom;
+	private ArrayList<Room> listeRoom;
+	private ArrayList<Porte> listePorte;
 	
-	public Niveau (List<Room> listeRoom) {
+	public Niveau (ArrayList<Room> listeRoom, ArrayList<Porte> listePorte) {
 		this.listeRoom = listeRoom;
+		this.listePorte = listePorte;
 	}
-
     
 }
