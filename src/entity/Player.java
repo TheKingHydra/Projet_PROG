@@ -63,7 +63,7 @@ public class Player extends Entity{
 	public void getPlayerImage() {
 		//gestion des expections 
 		try {
-			m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE_EPEE.png"));
+			m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -328,6 +328,12 @@ public class Player extends Entity{
 							items.add(a);
 						}
 						((Chest) c).setDispo(false);
+						entities.remove(i);
+						try {
+							m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE_EPEE.png"));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 					if (etilex == tilex && etiley == tiley+1) {
 						c = entities.get(i);
@@ -336,6 +342,12 @@ public class Player extends Entity{
 							items.add(a);
 						}
 						((Chest) c).setDispo(false);
+						entities.remove(i);
+						try {
+							m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE_EPEE.png"));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 					if (etilex == tilex-1 && etiley == tiley) {
 						c = entities.get(i);
@@ -344,6 +356,12 @@ public class Player extends Entity{
 							items.add(a);
 						}
 						((Chest) c).setDispo(false);
+						entities.remove(i);
+						try {
+							m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE_EPEE.png"));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 					if (etilex == tilex+1 && etiley == tiley) {
 						c = entities.get(i);
@@ -352,8 +370,13 @@ public class Player extends Entity{
 							items.add(a);
 						}
 						((Chest) c).setDispo(false);
+						entities.remove(i);
+						try {
+							m_idleImage = ImageIO.read(getClass().getResource("/Player/STEVE_EPEE.png"));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
-					System.out.println(items.size());
 				}
 			}
 			

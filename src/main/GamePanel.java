@@ -77,15 +77,15 @@ public class GamePanel extends JPanel implements Runnable{
 		//Création de la room 4
 		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
 		ArrayList<Entity> entities = new ArrayList<Entity>();
-		try{
-			BufferedImage img = ImageIO.read(getClass().getResource("/player/CREEPER.png"));
-			Entity e0 = new Creeper(1,"creeper",9*player.getStep(),7*player.getStep(),img);
-			e0.m_gp = this;
-			entities.add(e0);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		Room r4 = new Room(4,this.player,tileManager4,entities);
+		// try{
+		// 	BufferedImage img = ImageIO.read(getClass().getResource("/player/CREEPER.png"));
+		// 	Entity e0 = new Creeper(1,"creeper",9*player.getStep(),7*player.getStep(),img);
+		// 	e0.m_gp = this;
+		// 	entities.add(e0);
+		// } catch (IOException e) {
+		// 	e.printStackTrace();
+		// }
+		Room r4 = new Room(4,this.player,tileManager4,empty);
 		//Création de la room 5
 		TileManager tileManager5 = new TileManager(this, "/maps/map5.txt");
 		Room r5 = new Room(5,this.player,tileManager5,empty);
@@ -94,10 +94,12 @@ public class GamePanel extends JPanel implements Runnable{
 		//Création entités de la map 6
 		
 		Item contenu = new Item(1,"sword",9*this.player.getStep(),5*this.player.getStep(),16,16);
-		entities.clear();
+
+		//entities.remove(0);
+
 		try {
-			BufferedImage img = ImageIO.read(getClass().getResource("/tiles/chest.png"));
-			Entity e1 = new Chest(2,"chest",9*this.player.getStep(),5*this.player.getStep(),img,contenu);
+			BufferedImage img2 = ImageIO.read(getClass().getResource("/tiles/chest.png"));
+			Entity e1 = new Chest(2,"chest",9*player.getStep(),5*player.getStep(),img2,contenu);
 			e1.m_gp = this;
 			entities.add(e1);
 		} catch (IOException e) {
@@ -111,18 +113,18 @@ public class GamePanel extends JPanel implements Runnable{
 		Room r7 = new Room(7,this.player,tileManager7,empty);
 		//Création de la room 8
 
-		entities.clear();
-		try{
-			BufferedImage img = ImageIO.read(getClass().getResource("/player/creeper.png"));
-			Entity e2 = new Creeper(3,"creeper",9*player.getStep(),7*player.getStep(),img);
-			e2.m_gp = this;
-			entities.add(e2);
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
+		// entities.remove(0);
+		// try{
+		// 	BufferedImage img = ImageIO.read(getClass().getResource("/player/creeper.png"));
+		// 	Entity e2 = new Creeper(3,"creeper",9*player.getStep(),7*player.getStep(),img);
+		// 	e2.m_gp = this;
+		// 	entities.add(e2);
+		// }catch (IOException e) {
+		// 	e.printStackTrace();
+		// }
 		
 		TileManager tileManager8 = new TileManager(this, "/maps/map8.txt");
-		Room r8 = new Room(8,this.player,tileManager8,entities);
+		Room r8 = new Room(8,this.player,tileManager8,empty);
 		//Création de la room 9
 		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
 		Room r9 = new Room(9,this.player,tileManager9,empty);
