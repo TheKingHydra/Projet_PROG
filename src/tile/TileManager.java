@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 import main.GamePanel;
 

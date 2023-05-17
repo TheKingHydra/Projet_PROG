@@ -11,8 +11,8 @@ public class Piece extends Item {
 
 	
 	
-	public Piece(String name, int x, int y, int longX, int longY) {
-		super(name,x,y,longX,longY);
+	public Piece(int itemId, String name, int x, int y, int longX, int longY) {
+		super(itemId, name,x,y,longX,longY);
 
 		this.getPieceImage();
 	}
