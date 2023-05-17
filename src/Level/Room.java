@@ -73,8 +73,8 @@ public class Room {
         int tilex = (player.m_x/player.getStep());
 		int tiley = (player.m_y/player.getStep());
         int val = tileManager.getTuile(tilex, tiley);
-        if (val == 1 || val == 3 || val == 18) {
-        //   Planks   /   Path   /  Sandstone
+        if (val == 1 || val == 3 || val == 18 || val == 21 || val == 29) {
+        //   Planks   /   Path   /  Sandstone /  Netherrack / Nether Bricks
             if(tilex == 0) {
                 r = porteGauche.getOtherRoom(this.idRoom);
                 player.m_x = player.getStep()*(player.getMaxScreenCol()-1);
@@ -93,29 +93,42 @@ public class Room {
             }
         }
         if (val == 21){
-            if (tilex == 7){
+            if (tilex == 7 && idRoom == 9){
                 if (tiley == 4) {
-                    player.m_y = 3;
-                }
-
-                if (tiley == 5){
-                    player.m_y = 4;
+                    player.m_y = player.getStep()*3;
+                } else if (tiley == 5){
+                    player.m_y = player.getStep()*4;
                 }
                 r = porteNether.getOtherRoom(this.idRoom);
-                player.m_x = 3;
-            }
-            if (tilex == 5){
+                player.m_x = player.getStep()*3;
+            } else if (tilex == 5 && idRoom == 9){
                 if (tiley == 4) {
-                    player.m_y = 3;
-                }
-
-                if (tiley == 5){
-                    player.m_y = 4;
+                    player.m_y = player.getStep()*3;
+                } else if (tiley == 5){
+                    player.m_y = player.getStep()*4;
                 }
                 r = porteNether.getOtherRoom(this.idRoom);
-                player.m_x = 1;
+                player.m_x = player.getStep()*1;
+            } else if (tilex == 3 && idRoom == 11){
+                if (tiley == 4){
+                   player.m_y = player.getStep()*5;
+                } else if (tiley == 3) {
+                    player.m_y = player.getStep()*4;
+                }
+                r = porteNether.getOtherRoom(this.idRoom);
+                player.m_x = player.getStep()*7;
+            } else if (tilex == 1 && idRoom == 11){
+                
+                if (tiley == 4){
+                    player.m_y = player.getStep()*5;
+                } else if (tiley == 3) {
+                    player.m_y = player.getStep()*4;
+                }
+                r = porteNether.getOtherRoom(this.idRoom);
+                player.m_x = player.getStep()*5;
             }
         }
+        
         return r;
         
     }

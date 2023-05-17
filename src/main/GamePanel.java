@@ -10,8 +10,10 @@ import Items.Item;
 import Level.Porte;
 import Level.Room;
 import entity.Chest;
+import entity.Creeper;
 import entity.Entity;
 import entity.Player;
+import entity.Zombie;
 import tile.TileManager;
 
 import java.awt.Graphics;
@@ -43,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread m_gameThread;
 	Player player;
 		
+	private boolean shouldStop = false;
 	private Room m_room;
 
 	/**
@@ -73,19 +76,28 @@ public class GamePanel extends JPanel implements Runnable{
 		Room r3 = new Room(3,this.player,tileManager3,empty);
 		//Création de la room 4
 		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
-		Room r4 = new Room(4,this.player,tileManager4,empty);
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		try{
+			BufferedImage img = ImageIO.read(getClass().getResource("/player/CREEPER.png"));
+			Entity e0 = new Creeper(1,"creeper",9*player.getStep(),7*player.getStep(),img);
+			e0.m_gp = this;
+			entities.add(e0);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Room r4 = new Room(4,this.player,tileManager4,entities);
 		//Création de la room 5
 		TileManager tileManager5 = new TileManager(this, "/maps/map5.txt");
 		Room r5 = new Room(5,this.player,tileManager5,empty);
 		//Création de la room 6
 		TileManager tileManager6 = new TileManager(this, "/maps/map6.txt");
 		//Création entités de la map 6
-		ArrayList<Entity> entities = new ArrayList<Entity>();
-		Item contenu = new Item(1,"sword",9*this.player.getStep(),5*this.player.getStep(),16,16);
 		
+		Item contenu = new Item(1,"sword",9*this.player.getStep(),5*this.player.getStep(),16,16);
+		entities.clear();
 		try {
 			BufferedImage img = ImageIO.read(getClass().getResource("/tiles/chest.png"));
-			Entity e1 = new Chest(1,"chest",9*this.player.getStep(),5*this.player.getStep(),img,contenu);
+			Entity e1 = new Chest(2,"chest",9*this.player.getStep(),5*this.player.getStep(),img,contenu);
 			e1.m_gp = this;
 			entities.add(e1);
 		} catch (IOException e) {
@@ -94,13 +106,23 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		
 		Room r6 = new Room(6,this.player,tileManager6,entities);
-		System.out.println(entities.size());
 		//Création de la room 7
 		TileManager tileManager7 = new TileManager(this, "/maps/map7.txt");
 		Room r7 = new Room(7,this.player,tileManager7,empty);
 		//Création de la room 8
+
+		entities.clear();
+		try{
+			BufferedImage img = ImageIO.read(getClass().getResource("/player/creeper.png"));
+			Entity e2 = new Creeper(3,"creeper",9*player.getStep(),7*player.getStep(),img);
+			e2.m_gp = this;
+			entities.add(e2);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		TileManager tileManager8 = new TileManager(this, "/maps/map8.txt");
-		Room r8 = new Room(8,this.player,tileManager8,empty);
+		Room r8 = new Room(8,this.player,tileManager8,entities);
 		//Création de la room 9
 		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
 		Room r9 = new Room(9,this.player,tileManager9,empty);
@@ -124,7 +146,6 @@ public class GamePanel extends JPanel implements Runnable{
 		Porte p6 = new Porte(6,r5,r7);
 		Porte p7 = new Porte(7,r7, r8);
 		Porte p8 = new Porte(8,r8,r9);
-
 		Porte p9 = new Porte(9,r9,r11);
 		Porte p10 = new Porte(10,r11,r12);
 		Porte p11 = new Porte(11,r12,r13);
@@ -147,37 +168,13 @@ public class GamePanel extends JPanel implements Runnable{
 		r9.setPorte(p8, "droite");
 
 		r9.setPorte(p9, "nether");
-		r11.setPorte(p9, "nether2");
+		r11.setPorte(p9, "nether");
 		r11.setPorte(p10,"droite");
 		r12.setPorte(p10,"gauche");
 		r12.setPorte(p11,"droite");
 		r13.setPorte(p11,"gauche");
 
-		// //Création du Niveau Overworld
-		// ArrayList<Room> r_liste = new ArrayList<Room>();
-		// r_liste.add(r1);
-		// r_liste.add(r2);
-		// r_liste.add(r3);
-		// r_liste.add(r4);
-		// r_liste.add(r5);
-		// r_liste.add(r6);
-		// r_liste.add(r7);
-		// r_liste.add(r8);
-		// r_liste.add(r9);
-		// ArrayList<Porte> p_liste = new ArrayList<Porte>();
-		// p_liste.add(p);
-		// p_liste.add(p2);
-		// p_liste.add(p3);
-		// p_liste.add(p4);
-		// p_liste.add(p5);
-		// p_liste.add(p6);
-		// p_liste.add(p7);
-		// p_liste.add(p8);
-		// this.m_niveau = new Niveau(r_liste,p_liste);
-		
-
-		
-		
+		//Fin création niveau
 
 		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -196,35 +193,38 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	
 	public void run() {
+		while(!shouldStop){
+			double drawInterval = 1000000000/m_FPS; // rafraichissement chaque 0.0166666 secondes
+			double nextDrawTime = System.nanoTime() + drawInterval; 
 		
-		double drawInterval = 1000000000/m_FPS; // rafraichissement chaque 0.0166666 secondes
-		double nextDrawTime = System.nanoTime() + drawInterval; 
-		
-		while(m_gameThread != null) { //Tant que le thread du jeu est actif
+			while(m_gameThread != null) { //Tant que le thread du jeu est actif
 			
-			//Permet de mettre � jour les diff�rentes variables du jeu
-			this.update();
+				//Permet de mettre � jour les diff�rentes variables du jeu
+				this.update();
 			
-			//Dessine sur l'�cran le personnage et la map avec les nouvelles informations. la m�thode "paintComponent" doit obligatoirement �tre appel�e avec "repaint()"
-			this.repaint();
+				//Dessine sur l'�cran le personnage et la map avec les nouvelles informations. la m�thode "paintComponent" doit obligatoirement �tre appel�e avec "repaint()"
+				this.repaint();
 			
-			//Calcule le temps de pause du thread
-			try {
-				double remainingTime = nextDrawTime - System.nanoTime();
-				remainingTime = remainingTime/1000000;
+				//Calcule le temps de pause du thread
+				try {
+					double remainingTime = nextDrawTime - System.nanoTime();
+					remainingTime = remainingTime/1000000;
 				
-				if(remainingTime < 0) {
-					remainingTime = 0;
+					if(remainingTime < 0) {
+						remainingTime = 0;
+					}
+				
+					Thread.sleep((long)remainingTime);
+					nextDrawTime += drawInterval;
+				
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				
-				Thread.sleep((long)remainingTime);
-				nextDrawTime += drawInterval;
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 	
 
@@ -258,5 +258,13 @@ public class GamePanel extends JPanel implements Runnable{
 		this.m_room = r;
 	}
 
-	
+	public void gameover(){
+		for (int i = 0 ; i < 11 ; i++){
+			for (int j = 0; j < 15 ; j++){
+				m_room.getTileManager().m_mapTileNum[j][i] = 63;
+
+			}
+		}
+		m_gameThread = null;
+	}	
 }

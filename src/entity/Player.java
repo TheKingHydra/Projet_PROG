@@ -24,7 +24,7 @@ public class Player extends Entity{
 	KeyHandler m_keyH;
 
 	int monnaie;
-
+	private int HP;
 	int step;
 
 	private ArrayList<Item> items;
@@ -43,6 +43,7 @@ public class Player extends Entity{
 		this.getPlayerImage();
 		this.monnaie = 0;
 		this.items = new ArrayList<Item>();
+		this.HP = 3;
 	}
 	
 	/**
@@ -171,7 +172,11 @@ public class Player extends Entity{
 					setCollidingChest(false);
 				}
 			}
+		}
 
+		//Vérifie qu'il touche de la lave.
+		if (m_gp.getRoom().getTileManager().getTuile(tilex, tiley) == 19){
+			looseHP(HP);
 		}
 	}
 
@@ -201,7 +206,7 @@ public class Player extends Entity{
 				
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 19 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){ //Liste des cases autorisées.
 				return false;
 			}
@@ -227,7 +232,7 @@ public class Player extends Entity{
 				}
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 19 || val == 21 || val == 26|| val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -253,7 +258,7 @@ public class Player extends Entity{
 				}
 			}
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 19 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -280,7 +285,7 @@ public class Player extends Entity{
 			}
 
 
-			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 21 || val == 26);
+			autorise = (val == 1 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 14 || val == 15 || val == 16 || val == 17 || val == 18 || val == 19 || val == 21 || val == 26 || val == 29 || val == 32 || val == 33);
 			if (autorise){
 				return false;
 			}
@@ -362,7 +367,7 @@ public class Player extends Entity{
 				}
 			}
 			if(m_gp.getRoom().getId()==11){
-				if ((tilex == 0 || tilex == 2)&&(tiley == 4 || tiley == 5)){
+				if ((tilex == 1 || tilex == 3)&&(tiley == 3 || tiley == 4)){
 					m_gp.setRoom(m_gp.getRoom().changerRoom());
 				}
 			}
@@ -375,5 +380,16 @@ public class Player extends Entity{
 
 	public void setImage(BufferedImage img){
 
+	}
+
+	public void looseHP(int damage){
+		HP = HP-damage;
+		if (HP <= 0) {
+			m_gp.gameover();
+		}
+	}
+
+	public int getHP(){
+		return HP;
 	}
 }
