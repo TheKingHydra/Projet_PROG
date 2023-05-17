@@ -2,15 +2,23 @@ package main;
 
 import java.awt.Dimension;
 import java.awt.Color;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import Items.Item;
 import Level.Porte;
 import Level.Room;
+import entity.Chest;
+import entity.Entity;
 import entity.Player;
 import tile.TileManager;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Panel principal du jeu contenant la map principale
@@ -51,29 +59,51 @@ public class GamePanel extends JPanel implements Runnable{
 		m_keyH.setPlayer(this.player);
 		this.player.setStep(ORIGINAL_TILE_SIZE*SCALE);
 
+		ArrayList<Entity> empty = new ArrayList<Entity>();
 
 		//Création de la room 1
 		TileManager tileManager = new TileManager(this,"/maps/map.txt");
-		m_room = new Room(1, this.player, tileManager);
+		m_room = new Room(1, this.player, tileManager,empty);
 		
 		//Création de la room 2
 		TileManager tileManager2 = new TileManager(this, "/maps/map2.txt");
-		Room r2 = new Room(2,this.player,tileManager2);
+		Room r2 = new Room(2,this.player,tileManager2,empty);
 		//Création de la room 3
 		TileManager tileManager3 = new TileManager(this, "/maps/map3.txt");
-		Room r3 = new Room(3,this.player,tileManager3);
+		Room r3 = new Room(3,this.player,tileManager3,empty);
+		//Création de la room 4
 		TileManager tileManager4 = new TileManager(this, "/maps/map4.txt");
-		Room r4 = new Room(4,this.player,tileManager4);
+		Room r4 = new Room(4,this.player,tileManager4,empty);
+		//Création de la room 5
 		TileManager tileManager5 = new TileManager(this, "/maps/map5.txt");
-		Room r5 = new Room(5,this.player,tileManager5);
+		Room r5 = new Room(5,this.player,tileManager5,empty);
+		//Création de la room 6
 		TileManager tileManager6 = new TileManager(this, "/maps/map6.txt");
-		Room r6 = new Room(6,this.player,tileManager6);
+		//Création entités de la map 6
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		Item contenu = new Item(1,"sword",9*this.player.getStep(),5*this.player.getStep(),16,16);
+		
+		try {
+			BufferedImage img = ImageIO.read(getClass().getResource("/tiles/chest.png"));
+			Entity e1 = new Chest(1,"chest",9*this.player.getStep(),5*this.player.getStep(),img,contenu);
+			e1.m_gp = this;
+			entities.add(e1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		Room r6 = new Room(6,this.player,tileManager6,entities);
+		System.out.println(entities.size());
+		//Création de la room 7
 		TileManager tileManager7 = new TileManager(this, "/maps/map7.txt");
-		Room r7 = new Room(7,this.player,tileManager7);
+		Room r7 = new Room(7,this.player,tileManager7,empty);
+		//Création de la room 8
 		TileManager tileManager8 = new TileManager(this, "/maps/map8.txt");
-		Room r8 = new Room(8,this.player,tileManager8);
+		Room r8 = new Room(8,this.player,tileManager8,empty);
+		//Création de la room 9
 		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
-		Room r9 = new Room(9,this.player,tileManager9);
+		Room r9 = new Room(9,this.player,tileManager9,empty);
 		
 		Porte p = new Porte(1,m_room, r2);
 		Porte p2 = new Porte(2,r2,r3);
@@ -173,6 +203,9 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		m_room.getTileManager().draw(g2);
 		player.draw(g2);
+		for (int i = 0; i < this.m_room.getEntities().size(); i++){
+			this.m_room.getEntities().get(i).draw(g2);
+		}
 		g2.dispose();
 	}
 	
