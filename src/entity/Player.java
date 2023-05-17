@@ -171,7 +171,7 @@ public class Player extends Entity{
 					setCollidingChest(false);
 				}
 			}
-			
+
 		}
 	}
 
@@ -353,6 +353,19 @@ public class Player extends Entity{
 			}
 			
 			
+		} else {
+			int tilex = m_x/getStep();
+			int tiley = m_y/getStep();
+			if(m_gp.getRoom().getId()==9){
+				if ((tilex == 5 || tilex == 7)&&(tiley == 4 || tiley == 5)){
+					m_gp.setRoom(m_gp.getRoom().changerRoom());
+				}
+			}
+			if(m_gp.getRoom().getId()==11){
+				if ((tilex == 0 || tilex == 2)&&(tiley == 4 || tiley == 5)){
+					m_gp.setRoom(m_gp.getRoom().changerRoom());
+				}
+			}
 		}
 	}
 

@@ -13,6 +13,7 @@ public class Room {
 	private Porte porteBas;
 	private Porte porteGauche;
 	private Porte porteDroite;
+    private Porte porteNether;
     private Player player;
 	private TileManager tileManager;
     private ArrayList<Entity> entityTab;
@@ -48,20 +49,6 @@ public class Room {
         return this.tileManager;
     }
 
-    public void updatePortes(){
-        if (porteBas != null){
-            
-        }
-        if (porteHaut != null){
-            
-        }
-        if (porteGauche != null){
-            
-        }
-        if (porteDroite != null){
-            
-        }
-    }
 
     public void setPorte(Porte p, String s){
         if(s == "gauche"){
@@ -75,6 +62,9 @@ public class Room {
         }
         if(s == "haut"){
             porteHaut = p;
+        }
+        if(s == "nether"){
+            porteNether = p;
         }
     }
 
@@ -102,6 +92,30 @@ public class Room {
                 player.m_y = 0;
             }
         }
+        if (val == 21){
+            if (tilex == 7){
+                if (tiley == 4) {
+                    player.m_y = 3;
+                }
+
+                if (tiley == 5){
+                    player.m_y = 4;
+                }
+                r = porteNether.getOtherRoom(this.idRoom);
+                player.m_x = 3;
+            }
+            if (tilex == 5){
+                if (tiley == 4) {
+                    player.m_y = 3;
+                }
+
+                if (tiley == 5){
+                    player.m_y = 4;
+                }
+                r = porteNether.getOtherRoom(this.idRoom);
+                player.m_x = 1;
+            }
+        }
         return r;
         
     }
@@ -109,5 +123,6 @@ public class Room {
     public ArrayList<Entity> getEntities(){
         return this.entityTab;
     }
+
 }
 

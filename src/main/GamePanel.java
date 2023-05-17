@@ -44,14 +44,14 @@ public class GamePanel extends JPanel implements Runnable{
 	Player player;
 		
 	private Room m_room;
-	
+
 	/**
 	 * Constructeur
 	 */
 	public GamePanel() {
 		m_FPS = 60;				
 		
-		
+			
 		//Changements
 		//Création de l'handler et du player
 		m_keyH = new KeyHandler();
@@ -104,6 +104,17 @@ public class GamePanel extends JPanel implements Runnable{
 		//Création de la room 9
 		TileManager tileManager9 = new TileManager(this, "/maps/map9.txt");
 		Room r9 = new Room(9,this.player,tileManager9,empty);
+
+		//Création de la room Nether 1
+		TileManager tileManager11 = new TileManager(this, "/maps/map11.txt");
+		Room r11 = new Room(11,this.player,tileManager11,empty);
+		//Création de la room Nether 2
+		TileManager tileManager12 = new TileManager(this, "/maps/map12.txt");
+		Room r12 = new Room(12,this.player,tileManager12,empty);
+		//Création de la room Nether 3
+		TileManager tileManager13 = new TileManager(this, "/maps/map13.txt");
+		Room r13 = new Room(13,this.player,tileManager13,empty);
+
 		
 		Porte p = new Porte(1,m_room, r2);
 		Porte p2 = new Porte(2,r2,r3);
@@ -113,32 +124,62 @@ public class GamePanel extends JPanel implements Runnable{
 		Porte p6 = new Porte(6,r5,r7);
 		Porte p7 = new Porte(7,r7, r8);
 		Porte p8 = new Porte(8,r8,r9);
+
+		Porte p9 = new Porte(9,r9,r11);
+		Porte p10 = new Porte(10,r11,r12);
+		Porte p11 = new Porte(11,r12,r13);
+		
 		m_room.setPorte(p, "bas");
-		m_room.updatePortes();
 		r2.setPorte(p, "haut");
 		r2.setPorte(p2,"droite");
-		r2.updatePortes();
 		r3.setPorte(p2, "gauche");
 		r3.setPorte(p3,"droite");
-		r3.updatePortes();
 		r4.setPorte(p3, "gauche");
 		r4.setPorte(p4,"droite");
-		r4.updatePortes();
 		r5.setPorte(p4, "gauche");
 		r5.setPorte(p5,"droite");
 		r5.setPorte(p6,"bas");
-		r5.updatePortes();
 		r6.setPorte(p5, "gauche");
-		r6.updatePortes();
 		r7.setPorte(p6,"haut");
 		r7.setPorte(p7,"bas");
-		r7.updatePortes();
 		r8.setPorte(p7,"haut");
 		r8.setPorte(p8,"gauche");
-		r8.updatePortes();
 		r9.setPorte(p8, "droite");
-		r9.updatePortes();
 
+		r9.setPorte(p9, "nether");
+		r11.setPorte(p9, "nether2");
+		r11.setPorte(p10,"droite");
+		r12.setPorte(p10,"gauche");
+		r12.setPorte(p11,"droite");
+		r13.setPorte(p11,"gauche");
+
+		// //Création du Niveau Overworld
+		// ArrayList<Room> r_liste = new ArrayList<Room>();
+		// r_liste.add(r1);
+		// r_liste.add(r2);
+		// r_liste.add(r3);
+		// r_liste.add(r4);
+		// r_liste.add(r5);
+		// r_liste.add(r6);
+		// r_liste.add(r7);
+		// r_liste.add(r8);
+		// r_liste.add(r9);
+		// ArrayList<Porte> p_liste = new ArrayList<Porte>();
+		// p_liste.add(p);
+		// p_liste.add(p2);
+		// p_liste.add(p3);
+		// p_liste.add(p4);
+		// p_liste.add(p5);
+		// p_liste.add(p6);
+		// p_liste.add(p7);
+		// p_liste.add(p8);
+		// this.m_niveau = new Niveau(r_liste,p_liste);
+		
+
+		
+		
+
+		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
