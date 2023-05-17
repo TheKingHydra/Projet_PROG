@@ -1,13 +1,32 @@
 package entity;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import main.GamePanel;
+
 /**
- * Entité de base du jeu
+ * Entitï¿½ de base du jeu
  *
  */
 public abstract class Entity {
 	public int m_x, m_y;				//position sur la map
-	public int m_speed;					//Déplacement de l'entité
-	public BufferedImage m_idleImage;	//Une image de l'entité
+	public int m_speed;					//Dï¿½placement de l'entitï¿½
+	public BufferedImage m_idleImage;	//Une image de l'entitï¿½
+	public int entityId;
+	public GamePanel m_gp;
+	public String name;
+
+	/**
+	 * Affichage du l'image du joueur dans la fenï¿½tre du jeu
+	 * @param a_g2 Graphics2D 
+	 */
+	public void draw(Graphics2D a_g2) {
+
+		// recupÃ¨re l'image du joueur
+
+		BufferedImage l_image = m_idleImage;
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
+		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
+	}
 }
