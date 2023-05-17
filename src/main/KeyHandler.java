@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import entity.Player;
-import tile.TileManager;
+
 
 /**
  * Gestionnaire d'�v�nements (touche clavier)
@@ -25,6 +25,9 @@ public class KeyHandler implements KeyListener{
 		int code = e.getKeyCode();
 		//System.out.println(code);
 		player.deplacement(code);
+		if(code == 69) {
+			player.interact();
+		}
 	}
 
 	@Override

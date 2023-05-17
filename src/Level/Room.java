@@ -3,6 +3,10 @@ package Level;
 import entity.Player;
 import tile.TileManager;
 
+import java.util.ArrayList;
+
+import entity.Entity;
+
 public class Room {
 	private int idRoom;
 	private Porte porteHaut;
@@ -11,6 +15,7 @@ public class Room {
 	private Porte porteDroite;
     private Player player;
 	private TileManager tileManager;
+    private ArrayList<Entity> entityTab;
 
 	public Room(int idRoom, Porte porteHaut, Porte porteBas, Porte porteGauche, Porte porteDroite) {
 		this.idRoom = idRoom;
@@ -20,7 +25,7 @@ public class Room {
 		this.porteDroite = porteDroite;
 	}
 	
-	public Room(int idRoom, Player player, TileManager tileManager) {
+	public Room(int idRoom, Player player, TileManager tileManager, ArrayList<Entity> entities) {
 		this.idRoom = idRoom;
 		this.porteHaut = null;
 		this.porteBas = null;
@@ -28,6 +33,7 @@ public class Room {
 		this.porteDroite = null;
         this.tileManager = tileManager;
         this.player = player;
+        this.entityTab = entities;
 	}
 
     public Player getPlayer(){
@@ -98,6 +104,10 @@ public class Room {
         }
         return r;
         
+    }
+
+    public ArrayList<Entity> getEntities(){
+        return this.entityTab;
     }
 }
 
